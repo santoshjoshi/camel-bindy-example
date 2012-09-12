@@ -13,7 +13,7 @@ is shown below
 
 
 ######Input file
-id|name|semester|java|c|dbms|datastructure|mathematics
+     id|name|semester|java|c|dbms|datastructure|mathematics
 
      1|Student 1|1st|80|56|54|90|90
      1|Student 2|1st|50|65|75|90|60  
