@@ -8,17 +8,17 @@ The Example is about using the marshaling and unmarshaling capability of Camel B
 This example demonstrates the use of apache camel to process a huge text file with Bindy component.
 
 It reads a large text file delimited with '|' (pipe) and each new record delimited with '\n' (new line)
-process it and saves it back to another text file after adding some other information, the input and out put data
-is shown below 
+process it and saves it back to another text file after adding some other information, the input and output data file
+formats are shown below 
 
 
-######Input file
+######Input file format
      id|name|semester|java|c|dbms|datastructure|mathematics
 
      1|Student 1|1st|80|56|54|90|90
      1|Student 2|1st|50|65|75|90|60  
 
-######Output File
+######Output File format
      id|name|semester|grade|total score|result    
 
      1|Student 1|1st|A|370|Pass
