@@ -16,13 +16,13 @@ formats are shown below
      id|name|semester|java|c|dbms|datastructure|mathematics
 
      1|Student 1|1st|80|56|54|90|90
-     1|Student 2|1st|50|65|75|90|60  
+     2|Student 2|1st|50|65|75|90|60  
 
 ######Output File format
      id|name|semester|grade|total score|result    
 
      1|Student 1|1st|A|370|Pass
-     1|Student 2|1st|A|340|Pass 
+     2|Student 2|1st|A|340|Pass 
           
 #####Camel Route
 
