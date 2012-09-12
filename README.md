@@ -13,16 +13,16 @@ is shown below
 
 
 ######Input file
-id|name|class|java|c++|dbms|datastructure|mathematics
+id|name|semester|java|c|dbms|datastructure|mathematics
 
-1|Student 1|1st sem|80|56|54|90|90
-1|Student 2|1st sem|50|65|75|90|60  
+     1|Student 1|1st|80|56|54|90|90
+     1|Student 2|1st|50|65|75|90|60  
 
 ######Output File
-id|name|class|grade|total score|result    
+     id|name|semester|grade|total score|result    
 
-1|Student 1|1st sem|A|370|Pass
-1|Student 2|1st sem|A|340|Pass 
+     1|Student 1|1st|A|370|Pass
+     1|Student 2|1st|A|340|Pass 
           
 #####Camel Route
 
