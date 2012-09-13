@@ -32,14 +32,13 @@ A Camel route is written that executes as below
 1. Reads a txt huge text file delimeted with '|'  
 2. Unmarshals it to a JAVA POJO
 3. Process POJO
-4. Marshal the pojo back to another file after processing
+4. Create another POJO during processing
+4. Marshal the pojo back to new file after processing
 
 
 #####Setting up the Example
 
 1. check out the example
-
 2. execute mvn clean install
- 
 3. execute mvn exec:exec
 			
