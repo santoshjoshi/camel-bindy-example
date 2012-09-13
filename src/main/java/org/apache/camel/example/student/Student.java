@@ -1,4 +1,4 @@
-package org.apache.camel.example;
+package org.apache.camel.example.student;
 
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
@@ -26,6 +26,17 @@ public class Student {
 
 	@DataField(pos = 7)
 	private long mathematicsMarks;
+	
+	@DataField(pos = 8)
+	private long dataStructureMarks;
+
+	public long getDataStructureMarks() {
+		return dataStructureMarks;
+	}
+
+	public void setDataStructureMarks(long dataStructureMarks) {
+		this.dataStructureMarks = dataStructureMarks;
+	}
 
 	public String getId() {
 		return Id;

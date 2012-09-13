@@ -5,17 +5,24 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.10.1.xsd">
 
+    <bean name="studentProcesser" id="studentProcesser" class="org.apache.camel.example.StudentProcessor" />
 	<camelContext trace="false"	xmlns="http://camel.apache.org/schema/spring">
 
 		<camel:route id="students-fetch-route" autoStartup="true">
 			<camel:from uri="file:inbox?noop=true&amp;delay=10" />
 			<camel:split streaming="true">
-				<camel:tokenize token="\n" group="1000" />
-				<unmarshal ref="bindyDataformat">
-					<camel:bindy type="Csv"  classType="org.apache.camel.example.Student"/>
+				<camel:tokenize token="\n" group="2" />
+				<unmarshal ref="bindyDataformat" >
+					<camel:bindy type="Csv"  classType="org.apache.camel.example.student.Student"  />
 				</unmarshal>
-				<camel:log message="line is  ${body}" loggingLevel="WARN" />
+				<camel:bean ref="studentProcesser" method="processMarks" />
+				 <camel:marshal  ref="bindyDataformat" > 
+					<camel:bindy type="Csv"  classType="org.apache.camel.example.result.StudentResult"   />
+				</camel:marshal>
+				<camel:log message="Student Results are ${body}" loggingLevel="WARN" />
+				<camel:to uri="file:outbox?fileName=studentResult.txt&amp;fileExist=Append"></camel:to> 
 			</camel:split>
+			 
 		</camel:route>
 
 	</camelContext>
