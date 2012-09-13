@@ -13,7 +13,7 @@ formats are shown below
 
 
 ######Input file format
-     id|name|semester|java|c|dbms|datastructure|mathematics
+     id|name|semester|java|c|dbms|mathematics|datastructure
 
      1|Student 1|1st|80|56|54|90|90
      2|Student 2|1st|50|65|75|90|60  
