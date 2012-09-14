@@ -26,14 +26,13 @@ formats are shown below
           
 #####Camel Route
 
-	    
 A Camel route is written that executes as below
 
-1. Reads a txt huge text file delimeted with '|'  
+1. Reads a txt huge text file(student.txt) delimeted with '|'  from inbox directory
 2. Unmarshals it to a JAVA POJO
 3. Process POJO
 4. Create another POJO during processing
-4. Marshal the pojo back to new file after processing
+4. Marshal the pojo back to new file (studentResult.txt) in outbox directory after processing
 
 
 #####Setting up the Example
