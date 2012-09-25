@@ -38,6 +38,5 @@ A Camel route is written that executes as below
 #####Setting up the Example
 
 1. check out the example
-2. execute mvn clean install
-3. execute mvn exec:exec
+2. execute mvn camel:run
 			

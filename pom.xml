@@ -54,7 +54,14 @@
 	
 	<build>
 		<plugins>
-			<plugin>
+		<!-- to allow to run mvn camel:run -->
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-maven-plugin</artifactId>
+                <version>${camel.version}</version>
+            </plugin>
+            <!--  we need to define main class for this -->
+			<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2</version>
@@ -66,7 +73,7 @@
 						<argument>org.apache.camel.example.Main</argument>
 					</arguments>
 				</configuration>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 </project>
