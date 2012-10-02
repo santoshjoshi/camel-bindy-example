@@ -1,12 +1,16 @@
 Camel Bindy Example
 -----------------------------------------
 
-The Example is about using the marshaling and unmarshaling capability of Camel Bindy Component
+The Example is about utilizing features provided by Camel Bindy Component
 
 ##### About The Example
 
-This example demonstrates the use of apache camel to process a huge text file with Bindy component.
+Currently there are parts two examples 
 
+#####     Example 1
+     This is a simple example that shows the marshalling and unmarshalling capability of Camel Bindy Component
+
+ 
 It reads a large text file delimited with '|' (pipe) and each new record delimited with '\n' (new line)
 process it and saves it back to another text file after adding some other information, the input and output data file
 formats are shown below 
@@ -34,6 +38,12 @@ A Camel route is written that executes as below
 4. Create another POJO during processing
 4. Marshal the pojo back to new file (studentResult.txt) in outbox directory after processing
 
+
+#####     Example 2
+      In This example we are processing Fixed Length Format file and exploring  Bindy Capabilities For 
+a. Processing Fixed Length Format
+b. Date and number formatting, padding, trimming and alignment 
+     
 
 #####Setting up the Example
 
