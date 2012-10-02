@@ -40,7 +40,7 @@ A Camel route is written that executes as below
 
 ============================================================================================================
 #####     Example 2
-      In this example we are processing a Fixed Length Format file and exploring  Bindy Capabilities For:
+      In this example we are exploring  Bindy Capabilities For:
         a. Processing Fixed Length Format
         b. Date and number formatting, padding, trimming and alignment 
      
@@ -51,7 +51,7 @@ A Camel route is written that executes as below
 
 #####Camel Route 2
 
-The Camel route executes as below
+The Camel route executes as below:
 
 1. Reads the fixed length file(player.txt) from inbox/fixedlength directory
 2. Unmarshal it to a Java POJO
