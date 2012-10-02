@@ -28,22 +28,35 @@ formats are shown below
      1|Student 1|1st|A|370|Pass
      2|Student 2|1st|A|340|Pass 
           
-#####Camel Route
+#####Camel Route 1
 
 A Camel route is written that executes as below
 
-1. Reads a txt huge text file(student.txt) delimeted with '|'  from inbox directory
+1. Reads a txt huge text file(student.txt) delimeted with '|'  from inbox/csv directory
 2. Unmarshals it to a JAVA POJO
 3. Process POJO
 4. Create another POJO during processing
 4. Marshal the pojo back to new file (studentResult.txt) in outbox directory after processing
 
-
+============================================================================================================
 #####     Example 2
       In This example we are processing a Fixed Length Formated file and exploring  Bindy Capabilities For:
         a. Processing Fixed Length Format
         b. Date and number formatting, padding, trimming and alignment 
      
+######Input file format
+     Name, Debut Date, Country , Mathes palyed, Runs scored, Average, Strike rate, Batting posion, Reteriment Date
+     
+     Rahul Dravid      1996-09-10INDIA       00160   593060.54180.54 42012-09-01
+
+#####Camel Route 2
+
+A Camel route executes as below
+
+1. Reads the fixed length file(player.txt) from inbox/fixedlength directory
+2. Unmarshal it to a Java POJO
+3. Logs the POJO to console
+
 
 #####Setting up the Example
 
