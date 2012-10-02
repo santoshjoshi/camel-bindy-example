@@ -1,13 +1,18 @@
-package org.apache.camel.example;
+package org.apache.camel.example.csv;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.example.result.StudentResult;
-import org.apache.camel.example.student.Student;
+import org.apache.camel.example.csv.result.StudentResult;
+import org.apache.camel.example.csv.student.Student;
 import org.springframework.util.CollectionUtils;
 
+/**
+ * 
+ * @author santosh joshi
+ *
+ */
 public class StudentProcessor {
 
 	@SuppressWarnings("unchecked")

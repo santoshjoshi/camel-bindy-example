@@ -5,24 +5,51 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.10.1.xsd">
 
-    <bean name="studentProcesser" id="studentProcesser" class="org.apache.camel.example.StudentProcessor" />
+    <bean name="studentProcesser" id="studentProcesser" class="org.apache.camel.example.csv.StudentProcessor" />
 	
 	<camelContext trace="false"	xmlns="http://camel.apache.org/schema/spring">
-		<camel:route id="students-fetch-route" autoStartup="true">
-			<camel:from uri="file:inbox?noop=true&amp;delay=10" />
+	
+		<!--  
+			Simple CSV example:
+				Exploring Bindy capabilities for
+				a) Mashalling and 
+				b) UnMarshalling  
+		-->
+		
+		<camel:route id="bindy-csv-marhalling-unmarshalling-exmaple" autoStartup="false">
+			<camel:from uri="file:inbox/csv?noop=true&amp;delay=10" />
 			<camel:split streaming="true">
 				<camel:tokenize token="\n" group="2" />
 				<camel:unmarshal ref="bindyDataformat" >
-					<camel:bindy type="Csv"  classType="org.apache.camel.example.student.Student"  />
+					<camel:bindy type="Csv"  classType="org.apache.camel.example.csv.student.Student"  />
 				</camel:unmarshal>
 				<camel:log message="Student Details are ${body}" loggingLevel="WARN" />
 				<camel:bean ref="studentProcesser" method="processMarks" />
 				 <camel:marshal  ref="bindyDataformat" > 
-					<camel:bindy type="Csv"  classType="org.apache.camel.example.result.StudentResult"   />
+					<camel:bindy type="Csv"  classType="org.apache.camel.example.csv.result.StudentResult"   />
 				</camel:marshal>
 				<camel:log message="Student Results are ${body}" loggingLevel="WARN" />
 				<camel:to uri="file:outbox?fileName=studentResult.txt&amp;fileExist=Append"/> 
 			</camel:split>
+		</camel:route>
+		
+		<!--  
+			Camel Bindy Example Using Fixed Length Format
+				Exploring  Bindy Capabilities For 
+				a) Processing Fixed Length Format
+				b) Date and number formatting, padding, trimming and alignment 
+		-->
+		<camel:route id="bindy-fixed-length-example" autoStartup="true">
+			<camel:from uri="file:inbox/fixedlength?noop=true&amp;delay=10" />
+			<camel:log message="Started fixed File Processing" loggingLevel="WARN" />
+			<camel:split streaming="true">
+				<camel:tokenize token="\n" group="1" />
+				<camel:unmarshal ref="bindyDataformat" >
+					<camel:bindy type="Fixed"  classType="org.apache.camel.example.fixedlength.Player"/>
+				</camel:unmarshal>
+				<camel:log message="processed ${body}" loggingLevel="WARN" />
+			</camel:split>
+			<camel:stop/>
 		</camel:route>
 	</camelContext>
 	

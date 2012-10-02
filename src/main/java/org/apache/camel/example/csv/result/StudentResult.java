@@ -1,5 +1,8 @@
-package org.apache.camel.example.result;
+package org.apache.camel.example.csv.result;
 
+/**
+ * @author santosh joshi (santoshjoshi2003@gmail.com)
+ */
 import java.io.Serializable;
 
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;

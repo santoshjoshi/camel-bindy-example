@@ -1,8 +1,13 @@
-package org.apache.camel.example.student;
+package org.apache.camel.example.csv.student;
 
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
+/**
+ * 
+ * @author santosh joshi
+ *
+ */
 @CsvRecord(separator = "\\|")
 public class Student {
 
