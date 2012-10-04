@@ -45,7 +45,7 @@
 			<camel:split streaming="true">
 				<camel:tokenize token="\n" group="1" />
 				<camel:unmarshal ref="bindyDataformat" >
-					<camel:bindy type="Fixed"  classType="org.apache.camel.example.fixedlength.Player"/>
+					<camel:bindy type="Fixed"  locale="en-us" classType="org.apache.camel.example.fixedlength.Player"/>
 				</camel:unmarshal>
 				<camel:log message="processed ${body}" loggingLevel="WARN" />
 			</camel:split>

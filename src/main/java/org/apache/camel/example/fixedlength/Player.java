@@ -15,17 +15,17 @@ Here we are processing a fixed length record in below format
 
 Name, Debut Date, Country , Mathes palyed, Runs scored, Average, Strike rate, Batting posion, Reteriment Date
  
-Rahul Dravid      1996-09-10INDIA       00160   593060.54180.54 42012-09-01
-Sachin Tendulkar  1989-09-10INDIA       00140   600064.54140.54 42012-09-01
-Steve Waugh       1993-09-10AUSTRALIA   00140   900072.54180.54 42012-09-01
-Kevin Peterson    1999-09-10INDIA       00140   640020.54150.54 42012-09-01
-Adam Gilcrist     1996-09-10AUSTRALIA   00140   670077.54160.54 42012-09-01
+Rahul Dravid      1996-09-10INDIA       00160  9,30060.5480.54 42012-09-01
+Sachin Tendulkar  1989-09-10INDIA       00140 49,60064.5440.54 42012-09-01
+Steve Waugh       1993-09-10AUSTRALIA   00140 30,90072.5480.54 42012-09-01
+Kevin Peterson    1999-09-10INDIA       00140 21,60020.5450.54 42012-09-01
+Adam Gilcrist     1996-09-10AUSTRALIA   00140 18,67077.5460.54102012-09-01
 
 
  *  @author santosh joshi (santoshjoshi2003@gmail.com)
  *  
  */
-@FixedLengthRecord(length=75, paddingChar=' ')
+@FixedLengthRecord(length=74, paddingChar=' ')
 public class Player implements Serializable {
 
 	
@@ -43,19 +43,19 @@ private static final long serialVersionUID = 1L;
 	@DataField(pos = 41, length=5, paddingChar='0', trim=true)
 	private int matchesPlayed;
 	
-	@DataField(pos = 46, length=6, paddingChar=' ', trim=true)
+	@DataField(pos = 46, length=7, paddingChar=' ', trim=true, pattern="#0,000")
 	private Integer runsScored;
 	
-	@DataField(pos = 52, length=6, paddingChar='0', precision= 2)
+	@DataField(pos = 53, length=5, paddingChar='0', precision= 2)
 	private float averageRunRate;
 	
-	@DataField(pos = 58, length=6, precision= 2)
+	@DataField(pos = 58, length=5, precision= 2)
 	private BigDecimal strikeRate;
 	
-	@DataField(pos = 64, length=2, paddingChar=' ', trim=true)
+	@DataField(pos = 63, length=2, paddingChar=' ', trim=true)
 	private int batingPosition;
 	
-	@DataField(pos = 66, length=10, pattern = "yyyy-MM-dd", defaultValue="2021-12-31")
+	@DataField(pos = 65, length=10, pattern = "yyyy-MM-dd", defaultValue="2021-12-31")
 	private Date retirementDate;
 
 	public String getName() {
