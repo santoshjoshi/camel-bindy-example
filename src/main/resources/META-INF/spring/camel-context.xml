@@ -16,7 +16,7 @@
 				b) UnMarshalling  
 		-->
 		
-		<camel:route id="bindy-csv-marhalling-unmarshalling-exmaple" autoStartup="false">
+		<camel:route id="bindy-csv-marhalling-unmarshalling-exmaple" autoStartup="true">
 			<camel:from uri="file:inbox/csv?noop=true&amp;delay=10" />
 			<camel:split streaming="true">
 				<camel:tokenize token="\n" group="2" />
