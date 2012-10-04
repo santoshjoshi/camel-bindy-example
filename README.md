@@ -47,7 +47,7 @@ A Camel route is written that executes as below
 ######Input file format
      Name, Debut Date, Country , Mathes palyed, Runs scored, Average, Strike rate, Batting posion, Reteriment Date
      
-     Rahul Dravid      1996-09-10INDIA       00160   593060.54180.54 42012-09-01
+     Rahul Dravid      1996-09-10INDIA       00160  9,30060.5480.54 42012-09-01
 
 #####Camel Route 2
 
