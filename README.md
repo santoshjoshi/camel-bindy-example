@@ -101,7 +101,7 @@ The Camel route executes as below:
 
 The Camel route executes as follows:
 
-1. The Timer component _"bindymarshallingtimerTimer" executes the route
+1. The Timer component "bindymarshallingtimerTimer" executes the route
 2. It then calls generatePlayerModel method in  "org.apache.camel.example.util.ModelGenerator.java" to get player's detail
 3. The Player pojo is marshaled using fixed length data binding and written to a file
 
@@ -127,8 +127,9 @@ The Camel route executes as below:
         a. Header, Body and Trailer
      
 ######Input file format
-	 the file has the same format as above(as in example 5), but the difference is that the in this example the marshalling
-	 is done using three classes(check code).
+	 the file has the same format as above(as in example 5), but the difference is the way marshalling is done
+	 it uses three classes(check code).
+	 
      8=FIX.4.19=9035=049=INVMGR56=BRKR34=23652=19980604-07:59:3010=225
 
 #####Camel Route 5
@@ -146,5 +147,5 @@ The Camel route executes as below:
 1. check out the example
 2. execute mvn camel:run
 
-If you want to run only one example and stop or pause execution of other example then please set _ autoStartup="false" 
+If you want to run only one example and stop or pause execution of other example then please set autoStartup="false" 
 (currently true for all routes) for all routes you don't want to get executed.
