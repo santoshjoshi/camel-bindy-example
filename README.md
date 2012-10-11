@@ -40,12 +40,12 @@ A Camel route is written that executes as below
 
 ============================================================================================================
 #####     Example 2
-      A simple Bindy Example to test the one to many capabilities using csv data binding,
+      A simple Bindy Example to test the one to many capabilities using csv data binding.
       In this example we are depicting a simple one to many Department to Employee relationship.
 
 ######Input
-	 we are generating a java Department pojo with multiple employee  in "org.apache.camel.example.util.ModelGenerator.java" class using 
-	 generateEmployeeDepartmentModel() method.
+	 we are generating a java pojo Department with multiple employee in "org.apache.camel.example.util.ModelGenerator.java"  
+	 class using generateEmployeeDepartmentModel() method.
 	 
 	 here we are using camel bean component.
      <camel:bean ref="modelgenerator" method="generateEmployeeDepartmentModel" />
