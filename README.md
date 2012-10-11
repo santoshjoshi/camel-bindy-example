@@ -81,10 +81,70 @@ The Camel route executes as below:
 2. Unmarshal it to a Java POJO
 3. Logs the POJO to console
 
+============================================================================================================
+#####     Example 4
+     This example is just the reverse of example 3 , it marshalls a pojo back to file using the fixed file format
+
+######Input
+	 A java pojo Player is generated using the method generatePlayerModel 
+	 from "org.apache.camel.example.util.ModelGenerator.java".
+	 
+	 again here we are using camel bean component.
+     <camel:bean ref="modelgenerator" method="generatePlayerModel" />
+         
+######Output file format
+     Name, Debut Date, Country , Mathes palyed, Runs scored, Average, Strike rate, Batting posion, Reteriment Date
+     
+     Rahul Dravid      1996-09-10INDIA       00160  9,30060.5480.54 42012-09-01
+
+#####Camel Route 4
+
+The Camel route executes as follows:
+
+1. The Timer component _"bindymarshallingtimerTimer" executes the route
+2. It then calls generatePlayerModel method in  "org.apache.camel.example.util.ModelGenerator.java" to get player's detail
+3. The Player pojo is marshaled using fixed length data binding and written to a file
+
 
 ============================================================================================================
+#####     Example 5
+      A simple fix example to show bindy capabilities for processing of fix messages.
+     
+######Input file format
+     8=FIX.4.19=9035=049=INVMGR56=BRKR34=23652=19980604-07:59:3010=225
+
+#####Camel Route 5
+
+The Camel route executes as below:
+
+1. Reads the FIX protocoled file(fix-simple.txt) from inbox/fix/simple/ directory
+2. Unmarshal it to a Java POJO
+3. Logs the POJO to console
+
+============================================================================================================
+#####     Example 6
+      A FIX example to explore FIX messages with:
+        a. Header, Body and Trailer
+     
+######Input file format
+	 the file has the same format as above(as in example 5), but the difference is that the in this example the marshalling
+	 is done using three classes(check code).
+     8=FIX.4.19=9035=049=INVMGR56=BRKR34=23652=19980604-07:59:3010=225
+
+#####Camel Route 5
+
+The Camel route executes as below:
+
+1. Reads the FIX protocoled file(complex.txt) from inbox/fix/complex/ directory
+2. Unmarshal it to a Java POJO
+3. Logs the POJO with Header ,Body and sections info to  console
+
+============================================================================================================
+
 #####Setting up the Example
 
 1. check out the example
 2. execute mvn camel:run
-			
+
+If you want to run only one example and stop or pause execution of other example then please set _ autoStartup="false" 
+(currently true for all routes) for all routes you don't want to get executed.
