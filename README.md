@@ -39,7 +39,7 @@ A Camel route is written that executes as below
 4. Marshal the pojo back to new file (studentResult.txt) in outbox/csv/simple directory after processing
 
 ============================================================================================================
-#####     Example 2 
+#####     Example 2
       A simple Bindy Example to test the one to many capabilities using csv data binding.
       In this example we are depicting a simple one to many Department to Employee relationship.
 
