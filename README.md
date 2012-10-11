@@ -36,10 +36,34 @@ A Camel route is written that executes as below
 2. Unmarshals it to a JAVA POJO
 3. Process POJO
 4. Create another POJO during processing
-4. Marshal the pojo back to new file (studentResult.txt) in outbox directory after processing
+4. Marshal the pojo back to new file (studentResult.txt) in outbox/csv/simple directory after processing
 
 ============================================================================================================
 #####     Example 2
+      A simple Bindy Example to test the one to many capabilities using csv data binding,
+      In this example we are depicting a simple one to many Department to Employee relationship.
+
+######Input
+	 we are generating a java Department pojo with multiple employee  in "org.apache.camel.example.util.ModelGenerator.java" class using 
+	 generateEmployeeDepartmentModel() method.
+	 
+	 here we are using camel bean component.
+     <camel:bean ref="modelgenerator" method="generateEmployeeDepartmentModel" />
+
+######Output file format
+     id|name|semester|grade|total score|result 
+     1|Coumpters|1|first-name-1|last-name-1|2012-11-10|9876543210
+
+#####Camel Route 2
+
+The Camel route executes as below:
+
+1. The Timer component "bindyonetomanyTimer" executes the route
+2. It then calls generateEmployeeDepartmentModel method in  "org.apache.camel.example.util.ModelGenerator.java" to get a department and its employee
+3. The department pojo is marshaled using csv data binding and appended to a file
+
+============================================================================================================
+#####     Example 3
       In this example we are exploring  Bindy Capabilities For:
         a. Processing Fixed Length Format
         b. Date and number formatting, padding, trimming and alignment 
@@ -49,7 +73,7 @@ A Camel route is written that executes as below
      
      Rahul Dravid      1996-09-10INDIA       00160  9,30060.5480.54 42012-09-01
 
-#####Camel Route 2
+#####Camel Route 3
 
 The Camel route executes as below:
 
@@ -58,6 +82,7 @@ The Camel route executes as below:
 3. Logs the POJO to console
 
 
+============================================================================================================
 #####Setting up the Example
 
 1. check out the example
