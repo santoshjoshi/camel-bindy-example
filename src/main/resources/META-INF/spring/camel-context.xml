@@ -6,8 +6,10 @@
     http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.10.1.xsd">
 
     <bean name="studentProcesser" id="studentProcesser" class="org.apache.camel.example.csv.StudentProcessor" />
+	<bean name="modelgenerator" id="modelgenerator" class="org.apache.camel.example.util.ModelGenerator" />
 	
 	<camelContext trace="false"	xmlns="http://camel.apache.org/schema/spring">
+	
 	
 		<!--  
 			Simple CSV example:
@@ -18,6 +20,7 @@
 		
 		<camel:route id="bindy-csv-marhalling-unmarshalling-exmaple" autoStartup="true">
 			<camel:from uri="file:inbox/csv?noop=true&amp;delay=10" />
+			<camel:log message="CAMEL BINDY CSV MARSHALLING UNMARSHALLING EXAMPLE" loggingLevel="WARN"/>
 			<camel:split streaming="true">
 				<camel:tokenize token="\n" group="2" />
 				<camel:unmarshal ref="bindyDataformat" >
@@ -29,9 +32,31 @@
 					<camel:bindy type="Csv"  classType="org.apache.camel.example.csv.result.StudentResult"   />
 				</camel:marshal>
 				<camel:log message="Student Results are ${body}" loggingLevel="WARN" />
-				<camel:to uri="file:outbox?fileName=studentResult.txt&amp;fileExist=Append"/> 
+				<camel:to uri="file:outbox/csv/simple?fileName=studentResult.txt&amp;fileExist=Append"/> 
 			</camel:split>
+			<camel:log message="COMPLETED BINDY SIMPLE CSV EXAMPLE" loggingLevel="WARN" />
 		</camel:route>
+		
+		
+		<!-- 
+			One to Many example
+		 -->
+		<camel:route id="bindy-one-to-many-example" autoStartup="true">
+			<camel:from uri="timer://bindyonetomanyTimer?repeatCount=1" />
+			<camel:log message="CAMEL BINDY CSV MARSHALLING ONE TO MANY EXAMPLE" loggingLevel="WARN"/>
+			<camel:bean ref="modelgenerator" method="generateEmployeeDepartmentModel" />
+			<camel:log message="Started one to many Processing" loggingLevel="WARN" />
+			<camel:split streaming="true" >
+				<camel:simple>${body}</camel:simple>
+				<camel:marshal ref="bindyDataformat" >
+					<camel:bindy type="Csv"  locale="en-us" packages="org.apache.camel.example.csv.onetomany"/>
+				</camel:marshal>
+				<camel:to uri="file:outbox/csv/onetomany?fileName=onetomany.txt&amp;fileExist=Append"></camel:to>
+			</camel:split>
+			
+			<camel:log message="OUTPUT FOR FIXED LENGTH MARHSALLING EXAMPLE ::: ${body}" loggingLevel="WARN"></camel:log>  
+		</camel:route>
+		
 		
 		<!--  
 			Camel Bindy Example Using Fixed Length Format
@@ -39,18 +64,58 @@
 				a) Processing Fixed Length Format
 				b) Date and number formatting, padding, trimming and alignment 
 		-->
-		<camel:route id="bindy-fixed-length-example" autoStartup="true">
+		<camel:route id="bindy-fixed-length-unmarshalling-example" autoStartup="true">
 			<camel:from uri="file:inbox/fixedlength?noop=true&amp;delay=10" />
-			<camel:log message="Started fixed File Processing" loggingLevel="WARN" />
+			<camel:log message="CAMEL BINDY FIXED LENGTH UNMARSHALLING EXAMPLE WITH OPTIONS LIME FORMATTING TRIMMING  ALIGNMENT AND PADDING" loggingLevel="WARN"/>
 			<camel:split streaming="true">
 				<camel:tokenize token="\n" group="1" />
 				<camel:unmarshal ref="bindyDataformat" >
 					<camel:bindy type="Fixed"  locale="en-us" classType="org.apache.camel.example.fixedlength.Player"/>
 				</camel:unmarshal>
-				<camel:log message="processed ${body}" loggingLevel="WARN" />
+				<camel:log message="OUTPUT FOR FIXED LENGTH UNMARHSALLING EXAMPLE ::: ${body}" loggingLevel="WARN" />
 			</camel:split>
 			<camel:stop/>
 		</camel:route>
+		
+		<!-- 
+			Fixed Length Marshalling example 
+		 -->
+		<camel:route id="bindy-fixed-length-marshalling-example" autoStartup="true">
+			<camel:from uri="timer://bindymarshallingtimerTimer?repeatCount=1" />
+			<camel:log message="CAMEL BINDY FIXED LENGTH MARSHALLING EXAMPLE WITH OPTIONS LIME FORMATTING TRIMMING  ALIGNMENT AND PADDING" loggingLevel="WARN"/>
+			<camel:bean ref="modelgenerator" method="generatePlayerModel" />
+			<camel:marshal ref="bindyDataformat" >
+				<camel:bindy type="Fixed"  locale="en-us" classType="org.apache.camel.example.fixedlength.Player"/>
+			</camel:marshal>
+			<camel:to uri="file:outbox/fixedlength?fileName=fixedlength.txt&amp;fileExist=Move&amp;moveExisting=${file:name}.${date:now:yyyyMMdd-HHmmss}.txt"></camel:to>
+			<camel:log message="OUTPUT OF FIXED LENGHT MARSHALLING ::: ${body}" loggingLevel="WARN"></camel:log>  
+		</camel:route>
+		
+		<!-- 
+			Fix Simple Example
+		 -->
+		<camel:route id="fix-simple-example" autoStartup="true">
+			<camel:from uri="file:inbox/fix/simple?noop=true&amp;delay=10" />
+			<camel:log message="CAMEL BINDY SIMPLE FIX MESSAGE EXAMPLE" loggingLevel="WARN"/>
+			<camel:unmarshal ref="bindyDataformat" >
+				<camel:bindy type="KeyValue"  locale="en-us" packages="org.apache.camel.example.fix.simple"/>
+			</camel:unmarshal>
+			<camel:log message="OUTPUT FOR SIMPLE FIX EXAMPLE ::: ${body}" loggingLevel="WARN"></camel:log>  
+		</camel:route>
+		
+		<!-- 
+			Fix Example with Sections
+		 -->
+		<camel:route id="fix-complex-with-sections-example" autoStartup="true">
+			<camel:from uri="file:inbox/fix/complex?noop=true&amp;delay=10" />
+			<camel:log message="CAMEL BINDY FIX MESSAGE EXAMPLE WITH SECTIONS " loggingLevel="WARN" />
+			<camel:unmarshal ref="bindyDataformat" >
+				<camel:bindy type="KeyValue"  locale="en-us" packages="org.apache.camel.example.fix.complex"/>
+			</camel:unmarshal>
+			<camel:log message="OUTPUT FOR FIX EXAMPLE WITH SECTIONS ::: ${body}" loggingLevel="WARN"></camel:log>  
+		</camel:route>
+		
+		
 	</camelContext>
 	
 </beans>
