@@ -12,6 +12,7 @@
 	
 	
 		<!--  
+			Example 1 :
 			Simple CSV example:
 				Exploring Bindy capabilities for
 				a) Mashalling and 
@@ -39,7 +40,8 @@
 		
 		
 		<!-- 
-			One to Many example
+			Example 2 :
+				One to Many example
 		 -->
 		<camel:route id="bindy-one-to-many-example" autoStartup="true">
 			<camel:from uri="timer://bindyonetomanyTimer?repeatCount=1" />
@@ -59,6 +61,8 @@
 		
 		
 		<!--  
+			Example 3 :
+			
 			Camel Bindy Example Using Fixed Length Format
 				Exploring  Bindy Capabilities For 
 				a) Processing Fixed Length Format
@@ -78,6 +82,8 @@
 		</camel:route>
 		
 		<!-- 
+			Example 4 :
+			
 			Fixed Length Marshalling example 
 		 -->
 		<camel:route id="bindy-fixed-length-marshalling-example" autoStartup="true">
@@ -92,6 +98,8 @@
 		</camel:route>
 		
 		<!-- 
+			Example 5 :
+			
 			Fix Simple Example
 		 -->
 		<camel:route id="fix-simple-example" autoStartup="true">
@@ -104,6 +112,8 @@
 		</camel:route>
 		
 		<!-- 
+			Example 6 :
+		
 			Fix Example with Sections
 		 -->
 		<camel:route id="fix-complex-with-sections-example" autoStartup="true">
