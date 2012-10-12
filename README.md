@@ -153,10 +153,10 @@ If you want to run only one example and stop or pause execution of other example
 
 
 #####References
-1. Fix protocol
+Fix protocol
 * `http://www.nyse.com/pdfs/NYSE%20CCG-SDBK%20FIX%20Sample%20Messages%204.1.pdf`
 * `http://fixspec.com/protocol?v=FIX40&comp=footer`
 * `http://fixspec.com/protocol?v=FIX40&comp=header`
 			
-2. Bindy details
+Bindy details
 * `http://camel.apache.org/bindy.html`
