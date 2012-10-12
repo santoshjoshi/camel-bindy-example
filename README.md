@@ -127,7 +127,7 @@ The Camel route executes as below:
         a. Header, Body and Trailer
      
 ######Input file format
-	 the file has the same format as above(as in example 5), but the difference is the way marshalling is done
+	 the file has the same format (as in example 5), but the difference is the way marshalling is done
 	 it uses three classes(check code).
 	 
      8=FIX.4.19=9035=049=INVMGR56=BRKR34=23652=19980604-07:59:3010=225
