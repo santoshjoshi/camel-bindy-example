@@ -8,7 +8,7 @@
   <properties>
 		<slf4j.version>1.6.1</slf4j.version>
 		<spring.version>3.0.7.RELEASE</spring.version>
-		<log4j.version>1.2.17</log4j.version>
+		<log4j.version>2.10.0</log4j.version>
 		<camel.version>2.10.1</camel.version>
 	</properties>
 
@@ -30,6 +30,12 @@
 		</dependency>
 
 		<!-- Log4j Dependencies -->
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-1.2-api -->
+		<dependency>
+    			<groupId>org.apache.logging.log4j</groupId>
+   			<artifactId>log4j-1.2-api</artifactId>
+   			<version>${log4j.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
