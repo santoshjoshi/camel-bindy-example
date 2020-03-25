@@ -8,7 +8,7 @@
   <properties>
 		<slf4j.version>1.6.1</slf4j.version>
 		<spring.version>3.0.7.RELEASE</spring.version>
-		<log4j.version>1.2.15</log4j.version>
+		<log4j.version>1.2.17</log4j.version>
 		<camel.version>2.10.1</camel.version>
 	</properties>
 
